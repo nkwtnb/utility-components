@@ -6,7 +6,7 @@ import List from "../components/List";
 import { Container, Drawer } from '@mui/material';
 import { Box } from '@mui/system';
 import { useState } from 'react';
-import Contains from '../components/Contains';
+import Contents from '../components/Contents';
 
 const Home: NextPage = () => {
   return (
@@ -22,7 +22,7 @@ const Home: NextPage = () => {
           <List menuItems={["1", "2", "3"]}/>
         </Box>
         <Box width={"100%"} sx={{bgcolor: 'white'}}>
-          <Contains></Contains>
+          <Contents></Contents>
         </Box>
       </Box>
     </Container>
