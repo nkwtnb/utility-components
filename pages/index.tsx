@@ -1,14 +1,33 @@
 import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
-import List from "../components/List";
+import MenuList from "../components/MenuList";
 import { Container, Drawer } from '@mui/material';
 import { Box } from '@mui/system';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Contents from '../components/Contents';
+import { ListItemsType } from '../types/ListItemsType';
 
 const Home: NextPage = () => {
+
+  const [activeIndex, setActive] = useState(0);
+  const handleClick = (index: number) => {
+    setActive(index);
+  }
+
+  const ListItems: ListItemsType[] = [
+    {
+      "label": "Square Image Card",
+      "component": <>1</>
+    },
+    {
+      "label": "Image Tile",
+      "component": <>2</>
+    },
+    {
+      "label": "OGP Card",
+      "component": <>3</>
+    },
+  ]
+
   return (
     <Container fixed>
       <Box
@@ -19,10 +38,14 @@ const Home: NextPage = () => {
         }}
       >
         <Box>
-          <List menuItems={["1", "2", "3"]}/>
+          <MenuList listItems={ListItems} onClick={handleClick} activeIndex={activeIndex}/>
         </Box>
         <Box width={"100%"} sx={{bgcolor: 'white'}}>
-          <Contents></Contents>
+          <Contents>
+            {
+              ListItems[activeIndex].component
+            }
+          </Contents>
         </Box>
       </Box>
     </Container>
